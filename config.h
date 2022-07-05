@@ -8,11 +8,11 @@ static const unsigned int systraypinning = 0;   /* 0: sloppy systray follows sel
 static const unsigned int systrayonleft = 0;   	/* 0: systray in the right corner, >0: systray on left of status text */
 static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
-static const int showsystray        = 1;     /* 0 means no systray */
+static const int showsystray        = 1;     /* 0 means no ystray */
 static const int showbar            = 1;     /* 0 means no bar */
 static const int topbar             = 1;     /* 0 means bottom bar */
-static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:medium:size=14",
-                                        "Material Design Icons-Regular:size=14" };
+static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:medium:size=13",
+                                        "Material Design Icons-Regular:size=13" };
 static const char dmenufont[]       = "monospace:size=14";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
@@ -100,6 +100,7 @@ static Key keys[] = {
 	{ 0,                    233,   spawn,          SHCMD("brightnessctl s +10%") },
 	{ MODKEY,               33,    spawn,          SHCMD("/home/davit/.local/launch/pycharm") },
 	{ 0,                    107,   spawn,          SHCMD("/home/davit/.local/scripts/screenshot.sh") },
+	{ 0,                    148,   spawn,          SHCMD("/home/davit/.local/scripts/screenshot.sh") },
 	{ MODKEY,               42,    spawn,          {.v = dmenucmd } }, // g */
   { MODKEY,             55,    setlayout,        {.v = &layouts[3]} },
 	{ MODKEY,               27,    spawn,          {.v = termcmdfloat } }, // R

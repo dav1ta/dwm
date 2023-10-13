@@ -1,13 +1,14 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 0;        /* border pixel of windows */
+static const unsigned int gappx     = 5;        /* gap pixel between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:style:medium:size=13",
                                         "Material Design Icons-Regular:size=13" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char dmenufont[]       = "monospace:size=15";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_gray3[]       = "#bbbbbb";
@@ -73,8 +74,8 @@ static const Key keys[] = {
 	/* modifier             key    function        argument */
 	{ MODKEY,               24,    killclient,     {0} },
 	{ WINKEY,       		    65,    spawn,          SHCMD("pkill -RTMIN+1 dwmblocks") },
+	{ WINKEY,       		    46,    spawn,          SHCMD("slock") },
 	{ MODKEY,            	  26,    spawn,          SHCMD("firefox") },
-	{ MODKEY,            	  53,    spawn,          SHCMD("/home/davit/.local/scripts/launch_buffer_python.py") },
 	{ 0,                    123,   spawn,          SHCMD("amixer -c 2 -q sset Master 10%+ && pkill -RTMIN+2 dwmblocks") },
 	{ 0,                    122,   spawn,          SHCMD("amixer -c 2 -q sset Master 10%- && pkill -RTMIN+2 dwmblocks") },
 	{ 0,                    121,   spawn,          SHCMD("amixer -c 2 set Capture toggle && pkill -RTMIN+2 dwmblocks") },
@@ -88,6 +89,7 @@ static const Key keys[] = {
 	{ MODKEY,               27,    spawn,          {.v = termcmdfloat } }, // R
 	{ MODKEY,               56,    togglebar,      {0} },             // b
 	{ MODKEY,               44,    focusstack,     {.i = +1 } },      // j
+	{ WINKEY,               23,    focusstack,     {.i = +1 } },      // j
 	{ MODKEY,               45,    focusstack,     {.i = -1 } },      // k
 	{ MODKEY,               31,    incnmaster,     {.i = +1 } },      // i
 	{ MODKEY,               32,    incnmaster,     {.i = -1 } },      // o
@@ -98,15 +100,13 @@ static const Key keys[] = {
 	{ MODKEY|ShiftMask,     54,    killclient,     {0} },             // c
 	{ MODKEY,               28,    setlayout,      {.v = &layouts[0]} }, // t
 	// { MODKEY,               41,    setlayout,      {.v = &layouts[1]} }, // f
-  { MODKEY,               41,    togglefullscr,  {0} },
-	{ MODKEY,               57,    setlayout,      {.v = &layouts[4]} },
-	{ MODKEY,               58,    setlayout,      {.v = &layouts[2]} }, // m
+  // { MODKEY,               41,    togglefullscr,  {0} },
+	{ MODKEY,               57,    spawn,        SHCMD("networkmanager_dmenu -l 22")  },
 	{ MODKEY,               65,    setlayout,      {0} },             // space
 	{ CONT,                 65,    togglefloating, {0} },             // space
 	{ MODKEY,               19,    view,           {.ui = ~0 } },     // 0
 	{ MODKEY|ShiftMask,     19,    tag,            {.ui = ~0 } },     // 0
 	{ MODKEY,               59,    focusmon,       {.i = -1 } },      // comma
-	{ WINKEY,               23,    focusmon,       {.i = +1 } },      // period
 	{ MODKEY|ShiftMask,     59,    tagmon,         {.i = -1 } },      // comma
 	{ MODKEY|ShiftMask,     36,    spawn,          {.v = termcmd}},      //Enter
 	{ MODKEY,     			    40,    tagmon,         {.i = +1 } },      // period
